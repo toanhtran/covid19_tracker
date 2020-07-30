@@ -6,6 +6,10 @@ import 'package:covid19_tracker/state_data.dart';
 import 'package:us_states/us_states.dart';
 import 'dart:io' show Platform;
 
+// TODO: Eliminate the state and us results page and use just one. This page will be refactored to 'LocationSelect' or something.
+// TODO: 'state_results_screen' will be refactored to 'results_screen' as will subsequent methods.
+// TODO: ADD the 'United States' to the picker and have the picker start there and put the states below. Tried this previously but it didn't work. Could be possible with the new networking setup.
+
 class StateSelectPage extends StatefulWidget {
   static const String id = 'state_select_screen';
 
@@ -92,7 +96,11 @@ class _StateSelectPageState extends State<StateSelectPage> {
     getData();
   }
 
-  // Todo: Fix formattting so the logo stays the same size from the load screen to this screen.
+  void updateUI() {
+    // TODO: Create this! Additional formatting will need to be done within the build method? Need ideas for this.
+  }
+
+  // TODO: Fix formatting so the logo stays the same size from the load screen to this screen.
   // Build Method
   @override
   Widget build(BuildContext context) {
