@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         LoadScreen.id: (context) => LoadScreen(),
         StateSelectPage.id: (context) => StateSelectPage(),
         StateResultsPage.id: (context) => StateResultsPage(),
-        USResultsPage.id: (context) => USResultsPage(),
+        USResultsScreen.id: (context) => USResultsScreen(),
       },
     );
   }
