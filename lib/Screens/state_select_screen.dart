@@ -7,7 +7,7 @@ import 'package:us_states/us_states.dart';
 import 'dart:io' show Platform;
 
 // TODO: Eliminate the state and us results page and use just one. This page will be refactored to 'LocationSelect' or something.
-// TODO: 'state_results_screen' will be refactored to 'results_screen' as will subsequent methods.
+// TODO: 'state_results_screen' will be refactored to 'results_screen' as will subsequent methods. Or keep this screen for reference and create the results_screen fresh. Yes. Do this.
 // TODO: ADD the 'United States' to the picker and have the picker start there and put the states below. Tried this previously but it didn't work. Could be possible with the new networking setup.
 
 class StateSelectPage extends StatefulWidget {
