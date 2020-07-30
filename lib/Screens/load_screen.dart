@@ -69,7 +69,7 @@ class _LoadScreenState extends State<LoadScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => USResultsPage(
+                          builder: (context) => USResultsScreen(
                             values: values,
                             isWaiting: isWaiting,
                           ),

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
 import 'package:covid19_tracker/Components/main_box_results.dart';
 
-class USResultsPage extends StatelessWidget {
-
+class USResultsScreen extends StatelessWidget {
   static const String id = 'us_results_screen';
 
-  USResultsPage({this.values, this.isWaiting});
+  USResultsScreen({this.values, this.isWaiting});
 
   final Map<String, String> values;
   final bool isWaiting;
