@@ -3,15 +3,14 @@ import 'package:covid19_tracker/Screens/us_results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
 
-class LoadScreen extends StatefulWidget {
+class LoadingScreen extends StatefulWidget {
   static const String id = 'load_screen';
 
   @override
-  _LoadScreenState createState() => _LoadScreenState();
+  _LoadingScreenState createState() => _LoadingScreenState();
 }
 
-class _LoadScreenState extends State<LoadScreen> {
-
+class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

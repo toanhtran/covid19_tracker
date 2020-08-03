@@ -6,10 +6,6 @@ import 'package:covid19_tracker/state_data.dart';
 import 'package:us_states/us_states.dart';
 import 'dart:io' show Platform;
 
-// TODO: Eliminate the state and us results page and use just one. This page will be refactored to 'LocationSelect' or something.
-// TODO: 'state_results_screen' will be refactored to 'results_screen' as will subsequent methods. Or keep this screen for reference and create the results_screen fresh. Yes. Do this.
-// TODO: ADD the 'United States' to the picker and have the picker start there and put the states below. Tried this previously but it didn't work. Could be possible with the new networking setup.
-
 class StateSelectPage extends StatefulWidget {
   static const String id = 'state_select_screen';
 
@@ -72,6 +68,7 @@ class _StateSelectPageState extends State<StateSelectPage> {
     );
   }
 
+  // TODO Change this page so it uses the new networking stuff to get the state data.
   // Getting the data from The COVID Tracking Project API
   Map<String, String> values = {};
 
@@ -94,10 +91,6 @@ class _StateSelectPageState extends State<StateSelectPage> {
   void initState() {
     super.initState();
     getData();
-  }
-
-  void updateUI() {
-    // TODO: Create this! Additional formatting will need to be done within the build method? Need ideas for this.
   }
 
   // TODO: Fix formatting so the logo stays the same size from the load screen to this screen.
@@ -135,11 +128,6 @@ class _StateSelectPageState extends State<StateSelectPage> {
                   ),
                   BottomButton(
                     onPressed: () {
-//                      Navigator.pushNamed(
-//                        context,
-//                        StateResultsPage.id,
-//                        arguments: {values, isWaiting},
-//                      );
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -161,7 +149,6 @@ class _StateSelectPageState extends State<StateSelectPage> {
                     },
                     buttonTitle: 'Back to Main',
                   ),
-
                 ],
               ),
             ),

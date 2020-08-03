@@ -5,6 +5,7 @@ import 'package:covid19_tracker/Components/main_box_results.dart';
 
 class StateResultsPage extends StatelessWidget {
 
+  // TODO This page is still using the "old" way of calling the data, it needs to be modified to use the new networking methods.
   static const String id = 'state_results_screen';
 
   StateResultsPage({this.values, this.isWaiting});

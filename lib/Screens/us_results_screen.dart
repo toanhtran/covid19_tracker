@@ -18,9 +18,11 @@ class _USResultsScreenState extends State<USResultsScreen> {
   void getUSData() async {
     var usData = await CovidTracking().getUSData();
 
+    // TODO This pushes to yet another screen. There's a black/blank screen inbetween. So this needs to be resolved. Would like both the us data push and the state data push to use the same results screen.
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return ResultsScreen(
         covidData: usData,
+        // TODO Add a way to insert 'United States' for the screen label, like the way the states are inserted.
       );
     }));
   }
