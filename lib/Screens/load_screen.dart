@@ -2,42 +2,15 @@ import 'package:covid19_tracker/Screens/state_select_screen.dart';
 import 'package:covid19_tracker/Screens/us_results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
-import 'package:covid19_tracker/us_data.dart';
 
 class LoadScreen extends StatefulWidget {
-
   static const String id = 'load_screen';
 
   @override
   _LoadScreenState createState() => _LoadScreenState();
-
 }
 
 class _LoadScreenState extends State<LoadScreen> {
-
-  // Getting the data from The COVID Tracking Project API
-  Map<String, String> values = {};
-
-  bool isWaiting = false;
-
-  void getData() async {
-    isWaiting = true;
-    try {
-      var data = await USData().getUSData();
-      isWaiting = false;
-      setState(() {
-        values = data;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +42,7 @@ class _LoadScreenState extends State<LoadScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => USResultsScreen(
-                            values: values,
-                            isWaiting: isWaiting,
-                          ),
+                          builder: (context) => USResultsScreen(),
                         ),
                       );
                     },
