@@ -3,14 +3,14 @@ import 'package:covid19_tracker/Screens/us_results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
 
-class LoadingScreen extends StatefulWidget {
-  static const String id = 'load_screen';
+class SelectScreen extends StatefulWidget {
+  static const String id = 'select_screen';
 
   @override
-  _LoadingScreenState createState() => _LoadingScreenState();
+  _SelectScreenState createState() => _SelectScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen> {
+class _SelectScreenState extends State<SelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

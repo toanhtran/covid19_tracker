@@ -5,7 +5,7 @@ import 'package:covid19_tracker/Screens/state_select_screen.dart';
 import 'package:covid19_tracker/Components/main_box_results.dart';
 
 class ResultsScreen extends StatefulWidget {
-  static const String id = 'state_results_screen';
+  static const String id = 'results_screen';
 
   ResultsScreen({this.covidData});
 
