@@ -5,17 +5,17 @@ import 'package:covid19_tracker/state_data.dart';
 import 'package:us_states/us_states.dart';
 import 'package:covid19_tracker/Services/covid_tracking.dart';
 import 'package:covid19_tracker/Screens/results_screen.dart';
-import 'package:covid19_tracker/Screens/select_screen.dart';
+import 'package:covid19_tracker/Screens/menu_screen.dart';
 import 'dart:io' show Platform;
 
-class StateSelectPage extends StatefulWidget {
+class StateSelectScreen extends StatefulWidget {
   static const String id = 'state_select_screen';
 
   @override
-  _StateSelectPageState createState() => _StateSelectPageState();
+  _StateSelectScreenState createState() => _StateSelectScreenState();
 }
 
-class _StateSelectPageState extends State<StateSelectPage> {
+class _StateSelectScreenState extends State<StateSelectScreen> {
   String selectedState = 'ak';
   bool showSpinner = false;
 
@@ -146,7 +146,7 @@ class _StateSelectPageState extends State<StateSelectPage> {
                   ),
                   BottomButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, SelectScreen.id);
+                      Navigator.pushNamed(context, MenuScreen.id);
                     },
                     buttonTitle: 'Main Menu',
                   ),

@@ -4,15 +4,14 @@ import 'package:covid19_tracker/Components/bottom_button.dart';
 import 'package:covid19_tracker/Screens/results_screen.dart';
 import 'package:covid19_tracker/Services/covid_tracking.dart';
 
-class SelectScreen extends StatefulWidget {
+class MenuScreen extends StatefulWidget {
   static const String id = 'select_screen';
 
   @override
-  _SelectScreenState createState() => _SelectScreenState();
+  _MenuScreenState createState() => _MenuScreenState();
 }
 
-class _SelectScreenState extends State<SelectScreen> {
-
+class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
@@ -81,7 +80,7 @@ class _SelectScreenState extends State<SelectScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => StateSelectPage(),
+                          builder: (context) => StateSelectScreen(),
                         ),
                       );
                     },

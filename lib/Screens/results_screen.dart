@@ -1,4 +1,4 @@
-import 'package:covid19_tracker/Screens/select_screen.dart';
+import 'package:covid19_tracker/Screens/menu_screen.dart';
 import 'package:covid19_tracker/Services/covid_tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
@@ -10,7 +10,6 @@ class ResultsScreen extends StatefulWidget {
   static const String id = 'results_screen';
 
   ResultsScreen({this.covidData});
-
   final covidData;
 
   @override
@@ -33,7 +32,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
   @override
   void initState() {
     super.initState();
-
     updateUI(widget.covidData);
   }
 
@@ -76,9 +74,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   ),
                   Expanded(
                     child: Text(
-                      // TODO Get 'United States' to show for US Data
-                      USStates.getName(state),
-//                      state == 'U/A' ? state.toString() : 'United States',
+                      state != 'U/A'
+                          ? USStates.getName(state)
+                          : 'United States',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 40.0,
@@ -152,7 +150,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => StateSelectPage(),
+                    builder: (context) => StateSelectScreen(),
                   ),
                 );
               },
@@ -160,7 +158,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
             ),
             BottomButton(
               onPressed: () {
-                Navigator.pushNamed(context, SelectScreen.id);
+                Navigator.pushNamed(context, MenuScreen.id);
               },
               buttonTitle: 'Main Menu',
             ),
