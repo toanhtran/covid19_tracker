@@ -6,6 +6,8 @@ import 'package:covid19_tracker/Screens/state_select_screen.dart';
 
 void main() => runApp(MyApp());
 
+// TODO Create app icons for both Android and iOS
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
