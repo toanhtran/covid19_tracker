@@ -1,10 +1,8 @@
 import 'package:covid19_tracker/Screens/results_screen.dart';
-import 'package:covid19_tracker/Screens/us_results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:covid19_tracker/Screens/select_screen.dart';
 import 'package:covid19_tracker/Screens/state_select_screen.dart';
-import 'package:covid19_tracker/Screens/state_results_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,8 +26,6 @@ class MyApp extends StatelessWidget {
       routes: {
         SelectScreen.id: (context) => SelectScreen(),
         StateSelectPage.id: (context) => StateSelectPage(),
-        StateResultsPage.id: (context) => StateResultsPage(),
-        USResultsScreen.id: (context) => USResultsScreen(),
         ResultsScreen.id: (context) => ResultsScreen(),
       },
     );

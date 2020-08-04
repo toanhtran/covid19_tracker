@@ -6,12 +6,24 @@ class NetworkHelper {
 
   final String url;
 
-  Future getData() async {
+  Future getUSData() async {
     http.Response response = await http.get(url);
 
     if (response.statusCode == 200) {
       var data = response.body.toString();
       final jsonData = jsonDecode(data)[0];
+      return jsonData;
+    } else {
+      print(response.statusCode);
+    }
+  }
+
+  Future getStateData() async {
+    http.Response response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      var data = response.body.toString();
+      final jsonData = jsonDecode(data);
       return jsonData;
     } else {
       print(response.statusCode);

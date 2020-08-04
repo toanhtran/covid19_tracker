@@ -5,17 +5,25 @@ const covidTrackingStatesURL = 'https://covidtracking.com/api/v1/states';
 
 class CovidTracking {
   Future<dynamic> getUSData() async {
-    NetworkHelper networkHelper = NetworkHelper(url: '$covidTrackingUSURL');
+    try {
+      NetworkHelper networkHelper = NetworkHelper(url: '$covidTrackingUSURL');
 
-    var usData = await networkHelper.getData();
-    return usData;
+      var usData = await networkHelper.getUSData();
+      return usData;
+    } on Exception catch (e) {
+      print(e);
+    }
   }
 
   Future<dynamic> getStateData(String selectedState) async {
-    NetworkHelper networkHelper = NetworkHelper(
-        url: '$covidTrackingStatesURL/$selectedState/current.json');
+    try {
+      NetworkHelper networkHelper = NetworkHelper(
+          url: '$covidTrackingStatesURL/$selectedState/current.json');
 
-    var stateData = await networkHelper.getData();
-    return stateData;
+      var stateData = await networkHelper.getStateData();
+      return stateData;
+    } on Exception catch (e) {
+      print(e);
+    }
   }
 }

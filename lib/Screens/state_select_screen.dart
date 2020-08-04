@@ -1,9 +1,11 @@
 import 'package:covid19_tracker/Components/bottom_button.dart';
-import 'package:covid19_tracker/Screens/state_results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:covid19_tracker/state_data.dart';
 import 'package:us_states/us_states.dart';
+import 'package:covid19_tracker/Services/covid_tracking.dart';
+import 'package:covid19_tracker/Screens/results_screen.dart';
+import 'package:covid19_tracker/Screens/select_screen.dart';
 import 'dart:io' show Platform;
 
 class StateSelectPage extends StatefulWidget {
@@ -42,7 +44,7 @@ class _StateSelectPageState extends State<StateSelectPage> {
       onChanged: (value) {
         setState(() {
           selectedState = value;
-          getData();
+          getStateData();
         });
       },
     );
@@ -61,26 +63,24 @@ class _StateSelectPageState extends State<StateSelectPage> {
       onSelectedItemChanged: (selectedIndex) {
         setState(() {
           selectedState = statesList[selectedIndex];
-          getData();
+          getStateData();
         });
       },
       children: pickerItems,
     );
   }
 
-  // TODO Change this page so it uses the new networking stuff to get the state data.
-  // Getting the data from The COVID Tracking Project API
-  Map<String, String> values = {};
-
+  Map<String, dynamic> selectedStateData = {};
   bool isWaiting = false;
 
-  void getData() async {
+  // Getting the data from The COVID Tracking Project API
+  void getStateData() async {
     isWaiting = true;
     try {
-      var data = await StateData().getStateData(selectedState);
+      var stateData = await CovidTracking().getStateData(selectedState);
       isWaiting = false;
       setState(() {
-        values = data;
+        selectedStateData = stateData;
       });
     } catch (e) {
       print(e);
@@ -90,10 +90,9 @@ class _StateSelectPageState extends State<StateSelectPage> {
   @override
   void initState() {
     super.initState();
-    getData();
+    getStateData();
   }
 
-  // TODO: Fix formatting so the logo stays the same size from the load screen to this screen.
   // Build Method
   @override
   Widget build(BuildContext context) {
@@ -131,23 +130,24 @@ class _StateSelectPageState extends State<StateSelectPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => StateResultsPage(
-                            values: values,
-                            isWaiting: isWaiting,
-                          ),
+                          builder: (context) {
+                            return ResultsScreen(
+                              covidData: selectedStateData,
+                            );
+                          },
                         ),
                       );
                     },
                     buttonTitle: 'Check State Results',
                   ),
-                  SizedBox(height: 15.0,),
+                  SizedBox(
+                    height: 15.0,
+                  ),
                   BottomButton(
                     onPressed: () {
-                      Navigator.pop(
-                        context,
-                      );
+                      Navigator.pushNamed(context, SelectScreen.id);
                     },
-                    buttonTitle: 'Back to Main',
+                    buttonTitle: 'Main Menu',
                   ),
                 ],
               ),

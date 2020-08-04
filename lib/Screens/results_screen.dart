@@ -1,8 +1,10 @@
+import 'package:covid19_tracker/Screens/select_screen.dart';
 import 'package:covid19_tracker/Services/covid_tracking.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
 import 'package:covid19_tracker/Screens/state_select_screen.dart';
 import 'package:covid19_tracker/Components/main_box_results.dart';
+import 'package:us_states/us_states.dart';
 
 class ResultsScreen extends StatefulWidget {
   static const String id = 'results_screen';
@@ -26,6 +28,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
   var death;
   var deathIncrease;
   var lastModified;
+  var state;
 
   @override
   void initState() {
@@ -36,27 +39,16 @@ class _ResultsScreenState extends State<ResultsScreen> {
 
   void updateUI(dynamic currentData) {
     setState(() {
-      if (currentData == null) {
-        positive = 'U/A';
-        positiveIncrease = 'U/A';
-        hospitalizedCumulative = 'U/A';
-        hospitalizedCurrently = 'U/A';
-        inIcuCumulative = 'U/A';
-        inIcuCurrently = 'U/A';
-        death = 'U/A';
-        deathIncrease = 'U/A';
-        lastModified = 'U/A';
-      } else {
-        positive = currentData['positive'];
-        positiveIncrease = currentData['positiveIncrease'];
-        hospitalizedCumulative = currentData['hospitalizedCumulative'];
-        hospitalizedCurrently = currentData['hospitalizedCurrently'];
-        inIcuCumulative = currentData['inIcuCumulative'];
-        inIcuCurrently = currentData['inIcuCurrently'];
-        death = currentData['death'];
-        deathIncrease = currentData['deathIncrease'];
-        lastModified = currentData['lastModified'];
-      }
+      positive = currentData['positive'] ?? 'U/A';
+      positiveIncrease = currentData['positiveIncrease'];
+      hospitalizedCumulative = currentData['hospitalizedCumulative'] ?? 'U/A';
+      hospitalizedCurrently = currentData['hospitalizedCurrently'] ?? 'U/A';
+      inIcuCumulative = currentData['inIcuCumulative'] ?? 'U/A';
+      inIcuCurrently = currentData['inIcuCurrently'] ?? 'U/A';
+      death = currentData['death'] ?? 'U/A';
+      deathIncrease = currentData['deathIncrease'] ?? 'U/A';
+      lastModified = currentData['dateChecked'] ?? 'U/A';
+      state = currentData['state'] ?? 'U/A';
     });
   }
 
@@ -82,16 +74,18 @@ class _ResultsScreenState extends State<ResultsScreen> {
                       child: Image.asset('images/trackerlogo.png'),
                     ),
                   ),
-//                  Expanded(
-//                    child: Text(
-//                      widget.isWaiting ? '?' : USStates.getName(widget.values['state']),
-//                      textAlign: TextAlign.center,
-//                      style: TextStyle(
-//                        fontSize: 40.0,
-//                        fontWeight: FontWeight.bold,
-//                      ),
-//                    ),
-//                  ),
+                  Expanded(
+                    child: Text(
+                      // TODO Get 'United States' to show for US Data
+                      USStates.getName(state),
+//                      state == 'U/A' ? state.toString() : 'United States',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -162,6 +156,12 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 );
               },
               buttonTitle: 'Check a US State',
+            ),
+            BottomButton(
+              onPressed: () {
+                Navigator.pushNamed(context, SelectScreen.id);
+              },
+              buttonTitle: 'Main Menu',
             ),
           ],
         ),

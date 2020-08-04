@@ -1,7 +1,8 @@
 import 'package:covid19_tracker/Screens/state_select_screen.dart';
-import 'package:covid19_tracker/Screens/us_results_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19_tracker/Components/bottom_button.dart';
+import 'package:covid19_tracker/Screens/results_screen.dart';
+import 'package:covid19_tracker/Services/covid_tracking.dart';
 
 class SelectScreen extends StatefulWidget {
   static const String id = 'select_screen';
@@ -11,6 +12,30 @@ class SelectScreen extends StatefulWidget {
 }
 
 class _SelectScreenState extends State<SelectScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    getUSData();
+  }
+
+  Map<String, dynamic> selectedUSData = {};
+  bool isWaiting = false;
+
+  void getUSData() async {
+    isWaiting = true;
+    try {
+      var usData = await CovidTracking().getUSData();
+      isWaiting = false;
+      setState(() {
+        selectedUSData = usData;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +64,12 @@ class _SelectScreenState extends State<SelectScreen> {
                   BottomButton(
                     onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => USResultsScreen(),
-                        ),
+                        context, MaterialPageRoute(builder: (context) {
+                        return ResultsScreen(
+                          covidData: selectedUSData,
+                        );
+                      },
+                      ),
                       );
                     },
                     buttonTitle: 'US Data',
