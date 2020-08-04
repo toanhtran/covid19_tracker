@@ -155,7 +155,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   ),
                 );
               },
-              buttonTitle: 'Check a US State',
+              buttonTitle: 'Check Another State',
             ),
             BottomButton(
               onPressed: () {
