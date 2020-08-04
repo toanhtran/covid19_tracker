@@ -35,7 +35,6 @@ class _SelectScreenState extends State<SelectScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +62,7 @@ class _SelectScreenState extends State<SelectScreen> {
                 children: <Widget>[
                   BottomButton(
                     onPressed: () {
+                      // TODO This should be a pushNamed.
                       Navigator.push(
                         context, MaterialPageRoute(builder: (context) {
                         return ResultsScreen(
@@ -77,6 +77,7 @@ class _SelectScreenState extends State<SelectScreen> {
                   SizedBox(height: 15.0,),
                   BottomButton(
                     onPressed: () {
+                      // TODO This should also be a pushNamed.
                       Navigator.push(
                         context,
                         MaterialPageRoute(

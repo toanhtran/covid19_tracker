@@ -126,6 +126,7 @@ class _StateSelectPageState extends State<StateSelectPage> {
                     child: Platform.isIOS ? iOSPicker() : androidDropdown(),
                   ),
                   BottomButton(
+                    // TODO PushNamed here, please
                     onPressed: () {
                       Navigator.push(
                         context,
