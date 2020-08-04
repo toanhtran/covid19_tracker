@@ -1,4 +1,4 @@
-# covid19_tracker
+# Covid-19 Tracker
 
 # Created by: Carly Coccaro
 # Date: July 23, 2020
