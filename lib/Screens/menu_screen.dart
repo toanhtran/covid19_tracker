@@ -4,6 +4,7 @@ import 'package:covid19_tracker/Components/bottom_button.dart';
 import 'package:covid19_tracker/Screens/results_screen.dart';
 import 'package:covid19_tracker/Services/covid_tracking.dart';
 
+/// Initial screen of app with selections to get US Covid-19 data or US State Covid-19 data
 class MenuScreen extends StatefulWidget {
   static const String id = 'select_screen';
 
@@ -61,7 +62,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 children: <Widget>[
                   BottomButton(
                     onPressed: () {
-                      // TODO This should be a pushNamed.
+                      // TODO Convert to pushNamed
                       Navigator.push(
                         context, MaterialPageRoute(builder: (context) {
                         return ResultsScreen(
@@ -76,7 +77,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   SizedBox(height: 15.0,),
                   BottomButton(
                     onPressed: () {
-                      // TODO This should also be a pushNamed.
+                      // TODO Convert to pushNamed
                       Navigator.push(
                         context,
                         MaterialPageRoute(

@@ -3,6 +3,7 @@ import 'package:covid19_tracker/Services/networking.dart';
 const covidTrackingUSURL = 'https://covidtracking.com/api/v1/us/current.json';
 const covidTrackingStatesURL = 'https://covidtracking.com/api/v1/states';
 
+/// Specify which URL to send to the networking service for data retrieval
 class CovidTracking {
   Future<dynamic> getUSData() async {
     try {

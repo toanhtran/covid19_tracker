@@ -6,10 +6,12 @@ import 'package:covid19_tracker/Screens/state_select_screen.dart';
 import 'package:covid19_tracker/Components/main_box_results.dart';
 import 'package:us_states/us_states.dart';
 
+/// Display build used for both US and State data
 class ResultsScreen extends StatefulWidget {
   static const String id = 'results_screen';
 
   ResultsScreen({this.covidData});
+
   final covidData;
 
   @override
@@ -145,7 +147,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               height: 25.0,
             ),
             BottomButton(
-              // TODO pushNamed this
+              // TODO Convert to pushNamed
               onPressed: () {
                 Navigator.push(
                   context,

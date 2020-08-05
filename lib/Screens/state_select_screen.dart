@@ -1,13 +1,14 @@
 import 'package:covid19_tracker/Components/bottom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:covid19_tracker/state_data.dart';
+import 'package:covid19_tracker/states_list.dart';
 import 'package:us_states/us_states.dart';
 import 'package:covid19_tracker/Services/covid_tracking.dart';
 import 'package:covid19_tracker/Screens/results_screen.dart';
 import 'package:covid19_tracker/Screens/menu_screen.dart';
 import 'dart:io' show Platform;
 
+/// Selection screen to choose a specific US state to get current Covid-19 data
 class StateSelectScreen extends StatefulWidget {
   static const String id = 'state_select_screen';
 
@@ -19,7 +20,7 @@ class _StateSelectScreenState extends State<StateSelectScreen> {
   String selectedState = 'ak';
   bool showSpinner = false;
 
-  // Android Dropdown
+  /// Android Dropdown state selection option for android users
   DropdownButton<String> androidDropdown() {
     List<DropdownMenuItem<String>> dropdownItems = [];
     for (String state in statesList) {
@@ -50,7 +51,7 @@ class _StateSelectScreenState extends State<StateSelectScreen> {
     );
   }
 
-  // iOS Picker
+  /// iOS Picker state selection option for iPhone users
   CupertinoPicker iOSPicker() {
     List<Text> pickerItems = [];
     for (String state in statesList) {
@@ -73,7 +74,7 @@ class _StateSelectScreenState extends State<StateSelectScreen> {
   Map<String, dynamic> selectedStateData = {};
   bool isWaiting = false;
 
-  // Getting the data from The COVID Tracking Project API
+  /// Send selected state/district/territory name to the CovidTracking service
   void getStateData() async {
     isWaiting = true;
     try {
@@ -93,7 +94,6 @@ class _StateSelectScreenState extends State<StateSelectScreen> {
     getStateData();
   }
 
-  // Build Method
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,7 +126,7 @@ class _StateSelectScreenState extends State<StateSelectScreen> {
                     child: Platform.isIOS ? iOSPicker() : androidDropdown(),
                   ),
                   BottomButton(
-                    // TODO PushNamed here, please
+                    // TODO Convert to pushNamed
                     onPressed: () {
                       Navigator.push(
                         context,

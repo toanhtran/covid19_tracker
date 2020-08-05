@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO Update app to use constants instead of hard coded values
 const kBottomContainerColor = Color(0xFF22333B);
 const kBottomContainerHeight = 80.0;
 
