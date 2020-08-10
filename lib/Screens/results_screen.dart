@@ -147,7 +147,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
               height: 25.0,
             ),
             BottomButton(
-              // TODO Convert to pushNamed
               onPressed: () {
                 Navigator.push(
                   context,
@@ -156,7 +155,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   ),
                 );
               },
-              buttonTitle: 'Check Another State',
+              buttonTitle: 'Back',
             ),
             BottomButton(
               onPressed: () {

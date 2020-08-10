@@ -62,7 +62,6 @@ class _MenuScreenState extends State<MenuScreen> {
                 children: <Widget>[
                   BottomButton(
                     onPressed: () {
-                      // TODO Convert to pushNamed
                       Navigator.push(
                         context, MaterialPageRoute(builder: (context) {
                         return ResultsScreen(
@@ -77,7 +76,6 @@ class _MenuScreenState extends State<MenuScreen> {
                   SizedBox(height: 15.0,),
                   BottomButton(
                     onPressed: () {
-                      // TODO Convert to pushNamed
                       Navigator.push(
                         context,
                         MaterialPageRoute(
